@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: utour-api
+  messages:
+    basename: messages
+
+server:
+  servlet:
+    context-path: /api
