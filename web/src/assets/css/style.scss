@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap');
+
+a {text-decoration: none !important;}
+ul  {list-style: none;}
+body, th, td, input, select, textarea, button{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+.align-items-center{align-items: center !important;}
+.align-items-end{align-items: end !important;}
+.v-btn {letter-spacing: 0px !important;}
+.v-tab {letter-spacing: 0px !important;}
+
+.v-tab--active.v-app-bar-tab{color: yellow !important;}
+
+.divider_underline {border-top-width:3px; width: 50px;border-collapse: collapse;border-style: solid;margin-top: 10px;margin-bottom: 10px;}
+.app-bar-tabs .v-tab {padding-left: 5px;padding-right: 5px;}
+.app-bar-tabs .v-tab--active{color: white !important;background-color: rgba(255,255,255, 0.3)}
+.bgGryDk2{background-color: #eaeaea;}
+.bgGryDk1{background-color: #f4f4f4;}
+
+.products_img {
+  @media screen and (min-width:700){
+    // <!-- xs,sm: 400, md,lg:500, xl:600 -->
+    height: 400px !important;
+  }
+}
+
+.product_tab .v-tab {}
+.product_tab .v-tab--active {font-weight: 600;}

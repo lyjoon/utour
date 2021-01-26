@@ -1,0 +1,95 @@
+buildscript {
+    ext {
+        springBootVersion = '2.3.7.RELEASE'
+        lombokVersion = '1.18.16'
+        h2DatabaseVersion = '1.4.200'
+        mariaJdbcVersion = '2.7.1'
+        queryDslPluginVersion = '1.0.10'
+        queryDslSupportVersion = '4.4.0'
+    }
+    repositories {
+        mavenCentral()
+        //for queryDsl-plugin dependencies
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:${queryDslPluginVersion}")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.ewerk.gradle.plugins.querydsl'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    //spring-boot(webmvc)
+    implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-aop:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}")
+
+    compileOnly("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}")
+
+    //lombok
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    //jdbc(maria, h2)
+    implementation "com.h2database:h2:${h2DatabaseVersion}"
+    implementation "org.mariadb.jdbc:mariadb-java-client:${mariaJdbcVersion}"
+
+    //queryDsl
+    implementation("com.querydsl:querydsl-jpa:${queryDslSupportVersion}")
+    implementation("com.querydsl:querydsl-apt:${queryDslSupportVersion}")
+    implementation("com.querydsl:querydsl-core:${queryDslSupportVersion}")
+}
+
+bootJar { enabled = true }
+jar { enabled = true }
+
+//boot-jar
+bootJar {
+    archiveFileName = "utour-api.${archiveExtension.get()}"
+}
+
+//boot-war
+bootWar {
+    archiveFileName = "utour-api.${archiveExtension.get()}"
+}
+
+
+def queryDslSrcDir = 'src/main/querydsl'
+
+
+querydsl {
+    jpa = true
+    library = "com.querydsl:querydsl-apt"
+    querydslSourcesDir = queryDslSrcDir
+}
+
+compileQuerydsl{
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', queryDslSrcDir]
+        }
+    }
+}

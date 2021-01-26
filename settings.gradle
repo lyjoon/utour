@@ -1,2 +1,3 @@
 rootProject.name = 'utour'
+include 'api'
 
