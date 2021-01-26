@@ -1,5 +1,5 @@
 <template>
-    <v-content class="d-flex justify-center">
+    <v-main class="d-flex justify-center">
 
       <home-carousel />
 
@@ -21,7 +21,7 @@
         </v-container>
       </v-row>
 
-    </v-content>
+    </v-main>
 </template>
 
 <script>

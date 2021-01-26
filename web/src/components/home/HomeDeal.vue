@@ -90,7 +90,7 @@
             img: 'https://cdn.imweb.me/thumbnail/20200401/5f50063b6c7b7.jpg'
           },
           {
-            idx:1,
+            idx:4,
             isMd: false,
             isBest: false,
             isHot: false,
@@ -99,7 +99,7 @@
             img: 'https://cdn.imweb.me/thumbnail/20191126/7028aaf1c9c7e.png'
           },
           {
-            idx:2,
+            idx:5,
             isMd: false,
             isBest: true,
             isHot: false,
@@ -108,7 +108,7 @@
             img: 'https://cdn.imweb.me/thumbnail/20200401/6a9528ec84ae7.jpg'
           },
           {
-            idx:3,
+            idx:6,
             isMd: true,
             isBest: true,
             isHot: true,
