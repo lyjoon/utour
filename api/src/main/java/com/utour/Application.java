@@ -4,6 +4,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @SpringBootApplication
 @EntityScan(basePackageClasses = Application.class)
-public class Application {
+public class Application extends SpringBootServletInitializer {
 
 	/**
 	 * spring-application run(type servlet)
@@ -22,5 +23,10 @@ public class Application {
 		new SpringApplicationBuilder(Application.class)
 			.web(WebApplicationType.SERVLET)
 			.run(args);
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.web(WebApplicationType.SERVLET).sources(Application.class);
 	}
 }

@@ -4,6 +4,7 @@
       <home-carousel />
 
       <v-row class="bgGryDk1">
+
         <v-container class="mx-auto" grid-list-sm> 
           <v-sheet elevation="1" class="mt-6 mb-12 pa-8">
             <home-subtitle subtitle="추천상품" class="ma-8" />
@@ -26,8 +27,8 @@
 
 <script>
 
-    import HomeCarousel from "../components/home/HomeCarousel";
-    import HomeSubtitle from "../components/home/HomeSubtitle";
+    import HomeCarousel from "./../components/home/HomeCarousel";
+    import HomeSubtitle from "./../components/home/HomeSubtitle";
     import HomeContact from "../components/home/HomeContact";
     import HomeDeal from "@/components/home/HomeDeal";
     import HomeReview from "@/components/home/HomeReview";

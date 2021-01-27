@@ -1,9 +1,11 @@
 spring:
   application:
-    name: utour-api
+    name: utour
   messages:
     basename: messages
-
-server:
-  servlet:
-    context-path: /api
+  resources:
+    static-locations:
+      - file:src/main/resources/static
+#server:
+#  servlet:
+#    context-path: /api

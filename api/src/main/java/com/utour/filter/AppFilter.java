@@ -10,7 +10,7 @@ import java.io.IOException;
  * 1. 요청정보
  * 2. 인증체크
  */
-@WebFilter
+//@WebFilter
 public class AppFilter implements Filter {
 
     @Override

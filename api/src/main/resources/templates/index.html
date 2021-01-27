@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>you-tour</title>
+    <meta id="_ctx" name="ctx" th:content="${#httpServletRequest.getContextPath()}" />
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(){
+            var ctx = document.getElementById("_ctx");
+            console.log('ctx : ', ctx, ctx.content);
+            location.href = ctx.content + "/home";
+        });
+    </script>
+</head>
+<body style="background-color:#eaeaea;">
+</body>
+</html>
