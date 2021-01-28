@@ -5,9 +5,9 @@
                 <v-card-title class="justify-space-between">
                     <strong>U-TOUR COMPANY</strong>
                     <div>
-                      <v-chip class="mr-1">여행약관</v-chip>
-                      <v-chip class="mr-1">보증보험</v-chip>
-                      <v-chip >개인정보방침</v-chip>
+                      <v-chip class="yellow darken-2 black--text mr-1">여행약관</v-chip>
+                      <v-chip class="yellow darken-2 black--text mr-1">보증보험</v-chip>
+                      <v-chip class="grey darken-2" >개인정보방침</v-chip>
                     </div>
                 </v-card-title>
 

@@ -26,5 +26,5 @@ body, th, td, input, select, textarea, button{
   }
 }
 
-.product_tab .v-tab {}
-.product_tab .v-tab--active {font-weight: 600;}
+.product_tab .v-tab {border-bottom: 1px solid #eaeaea;}
+.product_tab .v-tab--active {font-weight: 500;}

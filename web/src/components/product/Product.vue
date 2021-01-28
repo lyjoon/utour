@@ -10,15 +10,10 @@
                             </div>
                             <div class="d-flex flex-column col-5 pl-1">
                                 <v-flex class="pb-1">
-                                    <v-img height="250" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Solid_blue.svg/1024px-Solid_blue.svg.png"></v-img>
+                                    <v-img max-height="250" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Solid_blue.svg/1024px-Solid_blue.svg.png"></v-img>
                                 </v-flex>
                                 <v-flex class="pt-1 d-flex d-inline">
-                                    <v-flex class="d-flex pl-0 pr-1 pt-0 pb-0 flex-column col-6">
-                                        <v-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Auto_Racing_Green.svg/1200px-Auto_Racing_Green.svg.png"></v-img>
-                                    </v-flex>
-                                    <v-flex class="d-flex pl-1 pr-0 pt-0 pb-0 flex-column col-6">
-                                        <v-img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Auto_Racing_Green.svg/1200px-Auto_Racing_Green.svg.png"></v-img>
-                                    </v-flex>
+                                    <v-img max-height="250" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Auto_Racing_Green.svg/1200px-Auto_Racing_Green.svg.png"></v-img>
                                 </v-flex>
                             </div>
                         </div>
@@ -37,8 +32,8 @@
                             </div>
                         </v-card-text>
                         <v-card-actions>
-                            <div thumb-color="primary" three-line>
-                                <v-chip class="ma-1" small>조식제공</v-chip>
+                            <div class="ma-2" thumb-color="primary" three-line>
+                                <v-chip small>조식제공</v-chip>
                                 <v-chip class="ma-1" small>피트니스</v-chip>
                                 <v-chip class="ma-1" small>수영장</v-chip>
                                 <v-chip class="ma-1" small>Wi-Fi</v-chip>
@@ -47,7 +42,7 @@
                                 <v-chip class="ma-1" small>주차1대</v-chip>
                             </div>
                         </v-card-actions>
-                        <div class="pa-6">
+                        <div class="pa-4">
                             <v-btn block large class="flex-fill secondary">문의하기</v-btn>
                             <v-btn block large class="flex-fill grey darken-2 mt-4" dark>여행사 전화상담 (mobile)</v-btn>
                         </div>
@@ -76,7 +71,7 @@
 
                   <product-room v-if="tabIdx == 1" />
 
-                  <product-schedule v-if="tabIdx == 2" />
+                  <product-review v-if="tabIdx == 2" />
 
                 </v-tab-item>
               </v-tabs-items>
@@ -90,17 +85,18 @@
 <script>
     import ProductAccommodation from "@/components/product/ProductAccommodation";
     import ProductRoom from "@/components/product/ProductRoom";
-    import ProductSchedule from "@/components/product/ProductSchedule";
+    import ProductReview from "@/components/product/ProductReview";
+
     export default {
         name: "Product",
-      components: {ProductAccommodation, ProductRoom, ProductSchedule},
+      components: {ProductAccommodation, ProductRoom, ProductReview},
       data () {
             return {
                 tabIdx: 0,
                 tabs: [
-                    { id:0, title: '숙박 정보' },
-                    { id:1, title: '객실 정보'},
-                    { id:2, title: '일정' }
+                    { id:0, title: '숙소정보' },
+                    { id:1, title: '객실정보'},
+                    { id:2, title: '이용후기'},
                 ],
             };
         }
