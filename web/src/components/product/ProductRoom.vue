@@ -51,7 +51,7 @@
                 <v-col class="col-1" >
                     <v-card color="white" elevation="0" class="fill-height d-flex justify-center">
                         <v-list>
-                            <v-list-item><v-icon class="mr-2">mdi-calendar-month</v-icon> 확인</v-list-item>
+                            <v-btn dense elevation="0" disabled style="border:1px solid #eaeaea"><v-icon>mdi-calendar-month</v-icon></v-btn>
                         </v-list>
                     </v-card>
                 </v-col>
@@ -121,7 +121,7 @@
                   <v-col class="col-1" >
                       <v-card color="white" elevation="0" class="fill-height d-flex justify-center">
                           <v-list>
-                              <v-list-item><v-icon class="mr-2">mdi-calendar-month</v-icon> 확인</v-list-item>
+                              <v-btn dense elevation="0" style="border:1px solid #eaeaea"><v-icon>mdi-calendar-month</v-icon></v-btn>
                           </v-list>
                       </v-card>
                   </v-col>
@@ -185,7 +185,9 @@
                   <v-col class="col-1" >
                       <v-card color="white" elevation="0" class="fill-height d-flex justify-center">
                           <v-list>
-                              <v-list-item><v-icon class="mr-2">mdi-calendar-month</v-icon> 확인</v-list-item>
+                              <v-list-item>
+                                <v-btn dense elevation="0" style="border:1px solid #eaeaea"><v-icon>mdi-calendar-month</v-icon></v-btn>
+                              </v-list-item>
                           </v-list>
                       </v-card>
                   </v-col>
