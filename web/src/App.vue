@@ -22,6 +22,7 @@
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
   }
+  /*#app .container{min-width: 1024px}*/
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap');
 
   @font-face {

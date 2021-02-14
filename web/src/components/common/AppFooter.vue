@@ -19,13 +19,22 @@
                 </v-card-text>
             </v-card>
         </v-container>
-        
+      <v-dialog
+            v-model="dialog"
+            width="1000">
+        <service-terms />
+      </v-dialog>
     </v-footer>
 </template>
 
 <script>
+import ServiceTerms from "@/components/modal/ServiceTerms";
 export default {
-    name: "AppFooter"
+    name: "AppFooter",
+  components: {ServiceTerms},
+  data: () => ({
+    dialog:true
+  })
 }
 </script>
 

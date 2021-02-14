@@ -1,3 +1,5 @@
 rootProject.name = 'utour'
 include 'api'
+include 'web'
+include 'admin'
 
