@@ -1,13 +1,13 @@
 <template>
-    <v-footer color="#343a42" dark absolute inset app>
+    <v-footer color="#d4d4d4" absolute inset app>
         <v-container>
             <v-card tile elevation="0" color="transparent">
                 <v-card-title class="justify-space-between">
                     <strong>U-TOUR COMPANY</strong>
                     <div>
-                      <v-chip class="yellow darken-2 black--text mr-1">여행약관</v-chip>
-                      <v-chip class="yellow darken-2 black--text mr-1">보증보험</v-chip>
-                      <v-chip class="grey darken-2" >개인정보방침</v-chip>
+                      <v-chip small class="grey elevation-0 mr-1" dark v-on:click="dialog=!dialog">여행약관</v-chip>
+                      <v-chip small class="grey elevation-0 mr-1" dark>보증보험</v-chip>
+                      <v-chip small class="grey elevation-0"  dark>개인정보방침</v-chip>
                     </div>
                 </v-card-title>
 
@@ -21,7 +21,7 @@
         </v-container>
       <v-dialog
             v-model="dialog"
-            width="1000">
+            width="1024">
         <service-terms />
       </v-dialog>
     </v-footer>
@@ -33,7 +33,7 @@ export default {
     name: "AppFooter",
   components: {ServiceTerms},
   data: () => ({
-    dialog:true
+    dialog: false
   })
 }
 </script>
