@@ -54,8 +54,8 @@
         <div><img class="ml-4" :src="logoImgSrc" alt="u-tour" height="30" /></div>
         <v-spacer></v-spacer>
         <div>
-          <v-chip close close-icon="mdi-email" dark color="grey" small class="hidden-xs-only">묻고답하기</v-chip>
-          <v-chip close close-icon="mdi-help-circle" dark color="grey darken-3" small class="ml-1 mr-2 hidden-xs-only">견적문의</v-chip>
+          <v-chip close close-icon="mdi-email" dark color="grey" small class="hidden-xs-only" v-on:click="dialog.inquiry = !dialog.inquiry">묻고답하기</v-chip>
+          <v-chip close close-icon="mdi-help-circle" dark color="grey darken-3" small class="ml-1 mr-2 hidden-xs-only"  v-on:click="dialog.quote_contact = !dialog.quote_contact">견적문의</v-chip>
         </div>
       </div>
       <v-menu left bottom right>
@@ -79,14 +79,32 @@
           </v-tabs>
       </v-container>
     </div>
+
+    <v-dialog
+        v-model="dialog.inquiry"
+        width="1024">
+      <inquiry />
+    </v-dialog>
+    <v-dialog
+        v-model="dialog.quote_contact"
+        width="1024">
+      <quote-contact />
+    </v-dialog>
   </div>
 </template>
 
 <script>
+import Inquiry from "@/components/modal/Inquiry";
+import QuoteContact from "@/components/modal/QuoteContact";
 export default {
   name: 'AppHeader',
+  components: {QuoteContact, Inquiry},
   data: function () {
     return {
+      dialog: {
+        inquiry: false
+      , quote_contact: false
+      },
       drawer: false,
       logoImgSrc : require('@/assets/images/logo_secondary.png')
     }

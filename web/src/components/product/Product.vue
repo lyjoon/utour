@@ -3,17 +3,17 @@
         <v-container>
             <v-row>
                 <v-col class="col-xl-8 col-md-8 col-12 ">
-                    <v-card>
+                    <v-card height="440">
                         <div class="d-flex justify-space-between">
                             <div class="d-flex flex-column col-7 pr-1">
                                 <v-img src="https://cdn.wallpapersafari.com/88/55/gqJiS2.jpg" height="400"></v-img>
                             </div>
                             <div class="d-flex flex-column col-5 pl-1">
                                 <v-flex class="pb-1">
-                                    <v-img max-height="250" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Solid_blue.svg/1024px-Solid_blue.svg.png"></v-img>
+                                    <v-img height="200" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Solid_blue.svg/1024px-Solid_blue.svg.png"></v-img>
                                 </v-flex>
                                 <v-flex class="pt-1 d-flex d-inline">
-                                    <v-img max-height="250" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Auto_Racing_Green.svg/1200px-Auto_Racing_Green.svg.png"></v-img>
+                                    <v-img height="200" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Auto_Racing_Green.svg/1200px-Auto_Racing_Green.svg.png"></v-img>
                                 </v-flex>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                 </v-col>
 
                 <v-col class="col-md-4 col-xl-4 col-12">
-                    <v-card class="flex-fill" width="100%">
+                    <v-card class="flex-fill" width="100%" height="440">
                         <v-card-title>럭스 사우스 아리</v-card-title>
                         <v-card-text>
                             <div class="body-1 mt-3">

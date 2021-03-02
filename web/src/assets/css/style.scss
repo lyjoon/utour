@@ -20,7 +20,7 @@ body, th, td, input, select, textarea, button{
 .bgGryDk1{background-color: #f4f4f4;}
 
 .products_img {
-  @media screen and (min-width:700){
+  @media screen and (min-width:700px){
     // <!-- xs,sm: 400, md,lg:500, xl:600 -->
     height: 400px !important;
   }
