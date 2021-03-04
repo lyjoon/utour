@@ -1,6 +1,6 @@
 package com.utour.entity;
 
-import com.utour.entity.convert.BooleanChar1Yn;
+import com.utour.entity.convert.BooleanChar1YnConverter;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -29,6 +29,6 @@ public class Nation {
      * 사용여부
      */
     @Column(length = 1)
-    @Convert(converter = BooleanChar1Yn.class)
+    @Convert(converter = BooleanChar1YnConverter.class)
     private Boolean enable;
 }

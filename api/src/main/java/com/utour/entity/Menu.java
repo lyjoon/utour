@@ -1,6 +1,6 @@
 package com.utour.entity;
 
-import com.utour.entity.convert.BooleanChar1Yn;
+import com.utour.entity.convert.BooleanChar1YnConverter;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -17,9 +17,14 @@ public class Menu {
      * ID
      */
     @Id
-    @GeneratedValue(generator = "SEQ_MENU_GEN", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "SEQ_MENU_GEN", strategy = GenerationType.AUTO)
     private Integer menuId;
 
+    /**
+     * 메뉴명
+     */
+    @Column(length = 50)
+    private String menuName;
 
     /**
      * 국가코드
@@ -34,21 +39,15 @@ public class Menu {
     private String areaCode;
 
     /**
-     * 메뉴명
-     */
-    @Column(length = 50)
-    private String name;
-
-    /**
      * 노출순서
      */
-    private Integer order;
+    private Integer orderNo;
 
     /**
      * 사용여부
      */
     @Column(length = 1)
-    @Convert(converter = BooleanChar1Yn.class)
+    @Convert(converter = BooleanChar1YnConverter.class)
     private Boolean enable;
 
 }

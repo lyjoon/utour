@@ -7,7 +7,7 @@ import javax.persistence.Converter;
 import java.util.Optional;
 
 @Converter
-public class BooleanChar1Yn implements AttributeConverter<Boolean, String> {
+public class BooleanChar1YnConverter implements AttributeConverter<Boolean, String> {
 
     @Override
     public String convertToDatabaseColumn(Boolean attribute) {
