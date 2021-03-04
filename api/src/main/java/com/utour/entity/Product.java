@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Product {
 
     @Id
-    private Integer seq;
+    private Integer productId;
 
     @Column(length = 50)
     private String title;

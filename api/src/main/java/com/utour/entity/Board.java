@@ -14,7 +14,7 @@ public class Board {
 
     @Id
     @GeneratedValue(generator = "SEQ_BOARD_GEN", strategy = GenerationType.AUTO)
-    private Integer seq;
+    private Integer boardId;
 
     @Column(length = 200, nullable = false)
     private String title;
