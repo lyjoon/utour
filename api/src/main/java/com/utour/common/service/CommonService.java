@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 
+
 @Slf4j
 public class CommonService {
 
@@ -21,4 +22,5 @@ public class CommonService {
     protected String getMessage(String code, Object[] args, String defaultMessage){
         return this.messageSourceAccessor.getMessage(code, args, defaultMessage);
     }
+
 }

@@ -1,11 +1,9 @@
 package com.utour.dto;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 @Builder
 public class MenuDto {
 
@@ -17,7 +15,7 @@ public class MenuDto {
     /**
      * 국가코드
      */
-    private String nationCode;
+    private String countryCode;
 
     /**
      * 지역코드

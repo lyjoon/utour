@@ -6,6 +6,5 @@ spring:
   resources:
     static-locations:
       - file:src/main/resources/static
-#server:
-#  servlet:
-#    context-path: /api
+  jackson:
+    property-naming-strategy: SNAKE_CASE

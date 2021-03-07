@@ -10,4 +10,7 @@ import java.util.List;
 public interface MenuRepository extends CrudRepository<Menu, Integer> {
 
     List<Menu> findAll();
+
+    List<Menu> findByEnableTrueOrderByOrderNoAsc();
+
 }

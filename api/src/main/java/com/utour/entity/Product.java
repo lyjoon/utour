@@ -20,7 +20,7 @@ public class Product {
     private EntityConstants.ProductType productType;
 
     @Column(length = 5)
-    private String nationCode;
+    private String countryCode;
 
     @Column(length = 5)
     private String areaCode;

@@ -14,4 +14,6 @@ import java.util.List;
 public interface AreaRepository extends CrudRepository<Area, AreaId> {
 
     List<Area> findAll();
+
+    List<Area> findByAreaIdCountryCodeAndEnableTrue(String countryCode);
 }

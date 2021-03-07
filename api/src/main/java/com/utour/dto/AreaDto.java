@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class AreaDto {
 
-    private String nationCode;
+    private String countryCode;
 
     private String areaCode;
 

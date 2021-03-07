@@ -2,13 +2,11 @@ package com.utour.entity;
 
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
-public class BoardQnA {
+public class QnA {
 
     @Id
     private Integer boardId;
@@ -18,5 +16,9 @@ public class BoardQnA {
 
     @Column(length = 100)
     private String password;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
 
 }

@@ -10,14 +10,14 @@ import javax.persistence.*;
  */
 @Entity
 @Getter
-@SequenceGenerator(name = "SEQ_MENU_GEN", sequenceName = "SEQ_MENU", initialValue = 1, allocationSize = 5)
+@SequenceGenerator(name = "SEQ_MENU_GEN", sequenceName = "SEQ_MENU", initialValue = 1, allocationSize = 1)
 public class Menu {
 
     /**
      * ID
      */
     @Id
-    @GeneratedValue(generator = "SEQ_MENU_GEN", strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "SEQ_MENU_GEN", strategy = GenerationType.SEQUENCE)
     private Integer menuId;
 
     /**
@@ -30,7 +30,7 @@ public class Menu {
      * 국가코드
      */
     @Column(length = 5)
-    private String nationCode;
+    private String countryCode;
 
     /**
      * 지역코드

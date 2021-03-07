@@ -20,7 +20,7 @@ public class AreaId implements Serializable {
      */
     @Column(length = 5)
     @EqualsAndHashCode.Include
-    private String nationCode;
+    private String countryCode;
 
     /**
      * 지역코드

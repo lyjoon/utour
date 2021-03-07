@@ -10,20 +10,20 @@ import javax.persistence.*;
  */
 @Entity
 @Getter
-public class Nation {
+public class Country {
 
     /**
      * 국가코드
      */
     @Id
     @Column(length = 5)
-    private String nationCode;
+    private String countryCode;
 
     /**
      * 국가명
      */
     @Column(length = 50)
-    private String nationName;
+    private String countryName;
 
     /**
      * 사용여부

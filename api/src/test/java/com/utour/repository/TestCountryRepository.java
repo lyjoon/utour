@@ -1,7 +1,7 @@
 package com.utour.repository;
 
 import com.utour.Application;
-import com.utour.entity.Nation;
+import com.utour.entity.Country;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -11,23 +11,25 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @ActiveProfiles("local")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class TestNationRepository {
+public class TestCountryRepository {
 
     @Autowired
-    private NationRepository nationRepository;
+    private CountryRepository countryRepository;
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Test
     public void testSelect() {
-        List<Nation> list = this.nationRepository.findAll();
+        List<Country> list = this.countryRepository.findAll();
         log.info("list.size : {}", Optional.ofNullable(list).map(l -> l.size()).orElse(-1));
     }
+
+
+
 }

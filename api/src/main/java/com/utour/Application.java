@@ -1,5 +1,6 @@
 package com.utour;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -21,12 +22,15 @@ public class Application extends SpringBootServletInitializer {
 	 */
 	public static void main(String args[]) {
 		new SpringApplicationBuilder(Application.class)
-			.web(WebApplicationType.SERVLET)
-			.run(args);
+				.web(WebApplicationType.SERVLET)
+				.build()
+				.run(args);
 	}
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.web(WebApplicationType.SERVLET).sources(Application.class);
+		return builder
+				.web(WebApplicationType.SERVLET)
+				.sources(Application.class);
 	}
 }

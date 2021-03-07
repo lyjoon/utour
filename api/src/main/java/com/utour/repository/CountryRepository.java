@@ -1,6 +1,6 @@
 package com.utour.repository;
 
-import com.utour.entity.Nation;
+import com.utour.entity.Country;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +10,10 @@ import java.util.List;
  * 국가정보 관련
  */
 @Repository
-public interface NationRepository extends CrudRepository<Nation, String> {
+public interface CountryRepository extends CrudRepository<Country, String> {
 
-    List<Nation> findAll();
+    List<Country> findAll();
+
+    List<Country> findByEnableTrue();
+
 }

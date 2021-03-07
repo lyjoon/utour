@@ -7,4 +7,5 @@ public class Constants {
     public static final String Y = "Y";
     public static final String N = "N";
 
+    public static final int DEFAULT_PAGING_COUNT = 20;
 }
