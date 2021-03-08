@@ -15,7 +15,6 @@ public class TestQnARepository extends TestLocalApplication {
 
     @Test
     public void testList(){
-
         Page<QnA> page = this.qnARepository.findAll(PageRequest.of(0, 10));
         log.info("size : {}", page.getTotalElements());
     }

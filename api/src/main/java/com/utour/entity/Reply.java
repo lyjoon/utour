@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@SequenceGenerator(name = "SEQ_REPLY_GEN", sequenceName = "SEQ_REPLY")
+@SequenceGenerator(name = "SEQ_REPLY_GEN", sequenceName = "SEQ_REPLY", initialValue = 1, allocationSize = 1)
 public class Reply {
 
     @Id

@@ -1,4 +1,4 @@
-package com.utour.dto;
+package com.utour.dto.board;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
