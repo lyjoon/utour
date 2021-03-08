@@ -50,12 +50,14 @@ public class BoardService extends CommonService {
             case QNA:
             case REVIEW:
             default:
-                return this.boardRepository.findAll(PageRequest.of(page, Constants.DEFAULT_PAGING_COUNT)).map(board ->
-                        BoardDto.builder()
-                                .boardId(board.getBoardId())
-                                .contents(board.getContents())
-                                .title(board.getTitle())
-                                .build());
+                return this.boardRepository.selectByQuery(PageRequest.of(page, Constants.DEFAULT_PAGING_COUNT), query)
+                        .map(board ->
+                                BoardDto.builder()
+                                    .boardId(board.getBoardId())
+                                    .contents(board.getContents())
+                                    .title(board.getTitle())
+                                    .build()
+                        );
         }
     }
 }

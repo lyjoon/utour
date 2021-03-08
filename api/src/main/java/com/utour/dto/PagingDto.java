@@ -1,7 +1,6 @@
 package com.utour.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 

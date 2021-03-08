@@ -1,8 +1,10 @@
 package com.utour.repository;
 
 import com.querydsl.core.QueryResults;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.utour.entity.Board;
+import com.utour.entity.QBoard;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public interface BoardRepository extends BoardRepositorySupport, CrudRepository<Board, Integer> {
@@ -41,8 +44,16 @@ class BoardRepositorySupportImpl extends QuerydslRepositorySupport implements Bo
 
     @Override
     public Page<Board> selectByQuery(Pageable pageable, String query) {
-        //QueryResults<Board> results = this.queryFactory.selectFrom()
-        //new PageImpl<>()
-        return null;
+        QBoard board = QBoard.board;
+        JPAQuery<Board> jpaQuery = this.queryFactory.selectFrom(board);
+        if(Objects.nonNull(query))
+            jpaQuery.where(board.title.contains(query)
+                                .or(board.contents.contains(query)));
+        QueryResults<Board> results = jpaQuery
+                .orderBy(board.boardId.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+        return new PageImpl<>(results.getResults(), pageable, results.getTotal());
     }
 }
