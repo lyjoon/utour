@@ -1,11 +1,14 @@
 package com.utour.dto.board;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Data
-@Builder
+@SuperBuilder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BoardDto {
 
@@ -14,4 +17,5 @@ public class BoardDto {
     private String title;
 
     private String contents;
+
 }

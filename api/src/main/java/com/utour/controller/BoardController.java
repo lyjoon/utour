@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -43,5 +45,9 @@ public class BoardController {
                 .map(type -> boardService.getPage(boardType, page, query));
     }
 
-
+    @PutMapping(value = "/{board_type}")
+    public <T extends BoardDto> ResponseEntity<Void> save(@PathVariable(value = "board_type") EntityConstants.BoardType boardType, @RequestBody T command) {
+        this.boardService.save(boardType, command);
+        return ResponseEntity.ok(null);
+    }
 }

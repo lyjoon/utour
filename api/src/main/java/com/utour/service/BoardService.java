@@ -60,4 +60,7 @@ public class BoardService extends CommonService {
                         );
         }
     }
+
+    public <T extends BoardDto> void save(EntityConstants.BoardType boardType, T dcommand) {
+    }
 }
