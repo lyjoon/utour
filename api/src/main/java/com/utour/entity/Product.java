@@ -2,12 +2,16 @@ package com.utour.entity;
 
 import com.utour.common.contrants.EntityConstants;
 import com.utour.entity.convert.BooleanChar1YnConverter;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Product {
 
     @Id
@@ -37,4 +41,16 @@ public class Product {
     @Column(length = 1)
     @Convert(converter = BooleanChar1YnConverter.class)
     private Boolean refund;
+
+    @Builder
+    public Product(Integer productId, String title, EntityConstants.ProductType productType, String countryCode, String areaCode, String contents, Boolean display, Boolean refund) {
+        this.productId = productId;
+        this.title = title;
+        this.productType = productType;
+        this.countryCode = countryCode;
+        this.areaCode = areaCode;
+        this.contents = contents;
+        this.display = display;
+        this.refund = refund;
+    }
 }

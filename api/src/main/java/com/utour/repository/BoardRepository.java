@@ -1,6 +1,7 @@
 package com.utour.repository;
 
 import com.querydsl.core.QueryResults;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.utour.entity.Board;
@@ -12,9 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 
 @Repository
@@ -45,7 +44,9 @@ class BoardRepositorySupportImpl extends QuerydslRepositorySupport implements Bo
     @Override
     public Page<Board> selectByQuery(Pageable pageable, String query) {
         QBoard board = QBoard.board;
-        JPAQuery<Board> jpaQuery = this.queryFactory.selectFrom(board);
+        // JPAQuery<Board> jpaQuery = this.queryFactory.selectFrom(board);
+        // contents 제외(상세에서 조회)
+        JPAQuery<Board> jpaQuery = this.queryFactory.select(Projections.bean(board, board.boardId, board.boardType, board.title, board.createAt, board.writer)).from(board);
         if(Objects.nonNull(query))
             jpaQuery.where(board.title.contains(query)
                                 .or(board.contents.contains(query)));

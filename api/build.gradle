@@ -71,7 +71,7 @@ bootWar {
 }
 
 
-def queryDslSrcDir = 'src/main/generated'
+def queryDslSrcDir = 'src/main/querydsl'
 
 
 querydsl {

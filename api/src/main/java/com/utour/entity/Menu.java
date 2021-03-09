@@ -1,7 +1,10 @@
 package com.utour.entity;
 
 import com.utour.entity.convert.BooleanChar1YnConverter;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SequenceGenerator(name = "SEQ_MENU_GEN", sequenceName = "SEQ_MENU", initialValue = 1, allocationSize = 1)
 public class Menu {
 
@@ -50,4 +54,13 @@ public class Menu {
     @Convert(converter = BooleanChar1YnConverter.class)
     private Boolean enable;
 
+    @Builder
+    public Menu(Integer menuId, String menuName, String countryCode, String areaCode, Integer orderNo, Boolean enable) {
+        this.menuId = menuId;
+        this.menuName = menuName;
+        this.countryCode = countryCode;
+        this.areaCode = areaCode;
+        this.orderNo = orderNo;
+        this.enable = enable;
+    }
 }

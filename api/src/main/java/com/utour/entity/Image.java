@@ -8,10 +8,7 @@ import javax.persistence.*;
 @Entity
 @SequenceGenerator(name = "SEQ_IMAGE_GEN", sequenceName = "SEQ_IMAGE", initialValue = 1)
 @Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Image {
 
     @Id
@@ -28,4 +25,13 @@ public class Image {
 
     @Column(length = 50)
     private String imageAlt;
+
+    @Builder
+    public Image(Integer imageId, Integer refId, String imageSrc, EntityConstants.ImageType imageType, String imageAlt) {
+        this.imageId = imageId;
+        this.refId = refId;
+        this.imageSrc = imageSrc;
+        this.imageType = imageType;
+        this.imageAlt = imageAlt;
+    }
 }

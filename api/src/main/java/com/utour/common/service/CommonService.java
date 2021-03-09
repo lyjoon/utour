@@ -1,5 +1,6 @@
 package com.utour.common.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
@@ -10,6 +11,8 @@ public class CommonService {
 
     @Autowired
     protected MessageSourceAccessor messageSourceAccessor;
+
+    protected final ObjectMapper objectMapper = new ObjectMapper();
 
     protected String getMessage(String code){
         return this.messageSourceAccessor.getMessage(code);

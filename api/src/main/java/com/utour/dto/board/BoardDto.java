@@ -1,15 +1,14 @@
 package com.utour.dto.board;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder
+import java.time.LocalDateTime;
+
 @Getter
-@Setter
-@NoArgsConstructor
+@SuperBuilder
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@NoArgsConstructor
 public class BoardDto {
 
     private Integer boardId;
@@ -17,5 +16,9 @@ public class BoardDto {
     private String title;
 
     private String contents;
+
+    private String writer;
+
+    private LocalDateTime createAt;
 
 }

@@ -43,16 +43,16 @@ insert into menu (menu_id, menu_name, order_no, enable, country_code, area_code)
 insert into menu (menu_id, menu_name, order_no, enable, country_code, area_code) values (seq_menu.nextval, '다낭' , 5, 'Y', 'VN', 'DAD');
 
 /* 게시판 */
-insert into board (board_id, board_type, title, contents, create_date) values (seq_board.nextval, 'NOTICE','오픈공지', '준비중입니다.', sysdate);
-insert into board (board_id, board_type, title, contents, create_date) values (seq_board.nextval, 'QNA','q', 'a', sysdate);
-insert into board (board_id, board_type, title, contents, create_date) values (seq_board.nextval, 'REVIEW','호호', '3점', sysdate);
+insert into board (board_id, board_type, title, contents, create_at, writer) values (seq_board.nextval, 'NOTICE','오픈공지', '준비중입니다.', sysdate, 'lyjoon');
+insert into board (board_id, board_type, title, contents, create_at, writer) values (seq_board.nextval, 'QNA','q', 'a', sysdate, 'lyjoon');
+insert into board (board_id, board_type, title, contents, create_at, writer) values (seq_board.nextval, 'REVIEW','호호', '3점', sysdate, 'lyjoon');
 
 /* 댓글 */
 insert into reply (seq, board_id, reply, password, writer) values (seq_reply.nextval, 1, '냉무', '1234', 'lyjoon');
 insert into reply (seq, board_id, reply, password, writer) values (seq_reply.nextval, 1, '무플방지', '1234', 'lyjoon');
 
 /* QnA */
-insert into qna (board_id, writer, password) values (2, 'lyjoon', '1234');
+insert into qna (board_id, password) values (2, '1234');
 
 /* QnA */
 insert into review (board_id, score) values (3, 3);

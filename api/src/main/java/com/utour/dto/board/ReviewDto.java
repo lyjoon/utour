@@ -3,16 +3,13 @@ package com.utour.dto.board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder
 @Getter
-@Setter
-@NoArgsConstructor
+@SuperBuilder
 @AllArgsConstructor
-public class QnaBoardDto extends BoardDto {
+@NoArgsConstructor
+public class ReviewDto extends BoardDto {
 
     private Integer score;
-
 }
