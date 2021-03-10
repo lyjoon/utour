@@ -82,7 +82,7 @@ public class BoardService extends CommonService {
      * @param boardType
      * @param command
      */
-    public void save(EntityConstants.BoardType boardType, SaveDto command) {
+    public <T extends BoardDto>void save(EntityConstants.BoardType boardType, T command) {
 
         Function<? super BoardDto, Mono<Board>> function = boardDto ->  Mono.just(this.boardRepository.save(Board.builder()
                 .boardType(boardType)
@@ -95,7 +95,7 @@ public class BoardService extends CommonService {
 
         switch (Optional.ofNullable(boardType).orElse(EntityConstants.BoardType.NOTICE)){
             case QNA:
-                QnaDto qnaDto = command.getQna();
+                QnaDto qnaDto = (QnaDto) command;
                 function.apply(qnaDto).subscribe(board -> {
                     this.qnARepository.save(QnA.builder()
                             .password(qnaDto.getPassword())
@@ -104,7 +104,7 @@ public class BoardService extends CommonService {
                 });
                 break;
             case REVIEW:
-                ReviewDto reviewDto = command.getReview();
+                ReviewDto reviewDto = (ReviewDto) command;
                 function.apply(reviewDto).subscribe(board -> {
                     this.reviewRepository.save(Review.builder()
                             .score(reviewDto.getScore())
