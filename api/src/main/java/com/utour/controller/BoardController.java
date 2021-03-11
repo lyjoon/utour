@@ -1,20 +1,19 @@
 package com.utour.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.utour.common.contrants.Constants;
 import com.utour.common.contrants.EntityConstants;
 import com.utour.dto.ReplyDto;
+import com.utour.dto.ResponseDto;
 import com.utour.dto.board.QnaDto;
-import com.utour.dto.board.SaveDto;
+import com.utour.dto.board.ReviewDto;
 import com.utour.dto.board.BoardDto;
+import com.utour.exception.ValidException;
 import com.utour.service.BoardService;
-import com.utour.util.MapObject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.MethodParameter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
@@ -23,13 +22,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @Slf4j
@@ -70,44 +68,60 @@ public class BoardController {
     @GetMapping(value = "/list/{board_type}/{page}")
     public Mono<Page<? extends BoardDto>> getBoardList(@PathVariable(value = "board_type") EntityConstants.BoardType boardType,
                                                        @PathVariable(value = "page") Integer page,
-                                                       @RequestParam(value = "q", required = false) String query
-
-    ) {
+                                                       @RequestParam(value = "q", required = false) String query) {
         return Mono.just(Optional.ofNullable(boardType).orElse(EntityConstants.BoardType.NOTICE))
                 .map(type -> boardService.getPage(boardType, page, query));
     }
 
     /**
-     * 저장
+     * 게시물 저장
      * @param boardType
-     * @param jsonString
+     * @param request
      * @return
      */
     @PutMapping(value = "/{board_type}")
-    public ResponseEntity<?> save(@PathVariable(value = "board_type") EntityConstants.BoardType boardType,@RequestBody String jsonString) /*throws NoSuchMethodException, MethodArgumentNotValidException*/ {
-
-        BoardDto command = this.convert(jsonString, QnaDto.class);
-
-        BindingResult bindingResult = new BeanPropertyBindingResult(command, command.getClass().getSimpleName());
-        this.validator.validate(command, bindingResult);
-
-        if(bindingResult.hasErrors()) {
-            FieldError fieldError = bindingResult.getFieldError();
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(MapObject.createOf("message", new StringBuilder(fieldError.getField()).append(' ' + fieldError.getDefaultMessage()).toString()).getValue());
-        }
-
-        this.boardService.save(boardType, command);
-        return ResponseEntity.ok(command);
+    public Mono<ResponseEntity<ResponseDto>> save(@PathVariable(value = "board_type") EntityConstants.BoardType boardType, HttpServletRequest request) {
+        return Mono.just(this.readBody(boardType, request))
+                .map(command -> {
+                    this.boardService.save(boardType, command);
+                    return ResponseEntity.ok(ResponseDto.builder()
+                            .status(HttpStatus.OK.value())
+                            .build());
+                });
     }
 
-    private <T extends BoardDto> T convert(String jsonString, Class<T> type) {
+    /**
+     * request 본문 추출
+     * @param boardType
+     * @param request
+     * @return
+     */
+    private BoardDto readBody(EntityConstants.BoardType boardType, HttpServletRequest request) {
         try {
-            T result = this.objectMapper.readValue(jsonString, type);
-            return result;
-        } catch (JsonProcessingException e) {
-            this.log.error(e.getMessage());
+            BoardDto command;
+            switch (boardType){
+                case QNA:
+                    command = this.objectMapper.readValue(request.getInputStream(), QnaDto.class);
+                    break;
+                case REVIEW:
+                    command = this.objectMapper.readValue(request.getInputStream(), ReviewDto.class);
+                    break;
+                default:
+                    command = this.objectMapper.readValue(request.getInputStream(), BoardDto.class);
+            }
+
+            BindingResult bindingResult = new BeanPropertyBindingResult(command, command.getClass().getSimpleName());
+            this.validator.validate(command, bindingResult);
+
+            if(bindingResult.hasErrors()) {
+                throw ValidException.builder().bindingResult(bindingResult).build();
+            }
+
+            return command;
+        } catch (ValidException ve) {
+            throw ve;
+        } catch (Exception e) {
+            throw ValidException.builder().throwable(e).build();
         }
-        return null;
     }
 }

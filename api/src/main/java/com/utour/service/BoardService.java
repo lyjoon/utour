@@ -4,7 +4,6 @@ import com.utour.common.contrants.Constants;
 import com.utour.common.contrants.EntityConstants;
 import com.utour.common.service.CommonService;
 import com.utour.dto.ReplyDto;
-import com.utour.dto.board.SaveDto;
 import com.utour.dto.board.BoardDto;
 import com.utour.dto.board.QnaDto;
 import com.utour.dto.board.ReviewDto;
@@ -82,7 +81,7 @@ public class BoardService extends CommonService {
      * @param boardType
      * @param command
      */
-    public <T extends BoardDto>void save(EntityConstants.BoardType boardType, T command) {
+    public <T extends BoardDto> void save(EntityConstants.BoardType boardType, T command) {
 
         Function<? super BoardDto, Mono<Board>> function = boardDto ->  Mono.just(this.boardRepository.save(Board.builder()
                 .boardType(boardType)
