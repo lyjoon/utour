@@ -38,9 +38,9 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    private ObjectMapper objectMapper;
-
     private final Validator validator;
+
+    private ObjectMapper objectMapper;
 
     @PostConstruct
     public void postConstruct(){
@@ -89,6 +89,9 @@ public class BoardController {
                             .build());
                 });
     }
+
+    //TODO DELETE
+    //TODO READ
 
     /**
      * request 본문 추출
